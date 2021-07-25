@@ -1,6 +1,8 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import Post from "./Post";
 
@@ -16,6 +18,15 @@ class Posts extends React.Component {
       .then((data) => {
         this.setState({ posts: data });
       });
+
+    // AOS init
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+    AOS.refresh();
   }
 
   fetchMoreData = async () => {
@@ -37,6 +48,8 @@ class Posts extends React.Component {
           dataLength={this.state.posts.length}
           next={this.fetchMoreData}
           className="md:grid grid-cols-2 md:px-10 lg:px-32 px-4"
+          data-aos="flip-up"
+          data-aos-delay="1400"
           hasMore={true}
           loader={
             <div className="flex col-span-2 justify-center items-center">
