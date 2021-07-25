@@ -13,7 +13,7 @@ class Posts extends React.Component {
 
   // First ten Posts
   componentDidMount() {
-    fetch("http://jsonplaceholder.typicode.com/posts?_start=10&_limit=10")
+    fetch("https://jsonplaceholder.typicode.com/posts?_start=10&_limit=10")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ posts: data });
@@ -31,7 +31,7 @@ class Posts extends React.Component {
 
   fetchMoreData = async () => {
     const response = await axios.get(
-      "http://jsonplaceholder.typicode.com/posts?_start=10&_limit=10"
+      "https://jsonplaceholder.typicode.com/posts?_start=10&_limit=10"
     );
     this.setState({
       posts: this.state.posts.concat(response.data),
