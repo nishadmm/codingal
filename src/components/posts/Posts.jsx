@@ -37,6 +37,7 @@ class Posts extends React.Component {
           dataLength={this.state.posts.length}
           next={this.fetchMoreData}
           hasMore={true}
+          className="md:grid grid-cols-2 md:px-10 lg:px-32 px-4"
           loader={
             <div className="flex col-span-2 justify-center items-center">
               <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
