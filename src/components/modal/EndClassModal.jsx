@@ -1,7 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { XIcon } from "@heroicons/react/outline";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const EndClassModal = ({ setShowModal, setEndCountDown }) => {
+  useEffect(() => {
+    // AOS init
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+    AOS.refresh();
+  });
   const [primaryReason, setPrimaryReason] = useState("completed");
   const [interruptReason, setInterruptReason] = useState("4");
 
@@ -19,7 +31,7 @@ const EndClassModal = ({ setShowModal, setEndCountDown }) => {
       <div className=" justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
           {/*content*/}
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none md:p-16 p-8">
+          <div data-aos="zoom-in" className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none md:p-16 p-8">
             <div className="flex items-start py-5 border-b border-solid border-blueGray-200 rounded-t">
               <h3 className="md:text-4xl text-2xl pt-3 font-bold text-gray-600">
                 Select a reason to end class
@@ -34,7 +46,7 @@ const EndClassModal = ({ setShowModal, setEndCountDown }) => {
               </button>
             </div>
             {/*body*/}
-            <div className="relative p-6 flex flex-col space-y-4 text-gray-600 font-bold">
+            <div data-aos="zoom-out" data-aos-delay="200" className="relative p-6 flex flex-col space-y-4 text-gray-600 font-bold">
               <label className="inline-flex items-center">
                 <input
                   type="checkbox"
